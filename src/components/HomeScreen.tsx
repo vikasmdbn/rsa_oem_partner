@@ -13,6 +13,9 @@ import {
   import MapViewDirections from 'react-native-maps-directions';
 import { useEffect, useState } from 'react';
 import {GooglePlacesAutocomplete} from 'react-native-google-places-autocomplete';
+import {VehicleBottomSheet} from './VehicleBottomSheet';
+
+import PriceCalculation from './PriceCalculation';
 
   type Props = NativeStackScreenProps<RootStackParamList, 'Screen1'>;
   const windowWidth = Dimensions.get('window').width;
@@ -65,6 +68,8 @@ const HomeScreen = ({navigation, route}: Props) => {
        initialRegion={mapArea}
      >
         <View style={styles.searchContainer}>
+
+        <PriceCalculation vehiclePrice={600} distance={8}/>
             
 
             
@@ -119,7 +124,10 @@ const HomeScreen = ({navigation, route}: Props) => {
             {/* <CustomMarker/> */}
             </Marker> : null }
         {hasPickUpData && hasDropData ? <Marker coordinate={dropSuggetionList as LatLongType} /> : null}
+
+        
      </MapView>
+     <VehicleBottomSheet onSelectCallback={(item) => console.log('clicked')}/>
    </View>  
         </SafeAreaView>
     )
