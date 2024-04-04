@@ -1,60 +1,51 @@
-import {
-  View,
-  SafeAreaView,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  TextInput,
-} from 'react-native';
-import type {NativeStackScreenProps} from '@react-navigation/native-stack';
-import type {RootStackParamList} from '../../App';
+import {View, SafeAreaView, StyleSheet, Button} from 'react-native';
 import MapView, {PROVIDER_GOOGLE, Marker} from 'react-native-maps';
 import {Dimensions} from 'react-native';
 import MapViewDirections from 'react-native-maps-directions';
-import {useEffect, useState} from 'react';
+import {useState} from 'react';
 import {GooglePlacesAutocomplete} from 'react-native-google-places-autocomplete';
 import {VehicleBottomSheet} from './VehicleBottomSheet';
 
-import PriceCalculation from './PriceCalculation';
+import {useNavigation} from '@react-navigation/native';
+import {NativeStackNavigationProp} from '@react-navigation/native-stack';
+import {RootStackParamList} from '../../App';
 
-type Props = NativeStackScreenProps<RootStackParamList, 'Screen1'>;
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
-
-// {"location": {"lat": 12.9044382, "lng": 77.56492779999999},
-//"viewport": {"northeast": {"lat": 12.91219691269861, "lng": 77.57342500461309},
-// "southwest": {"lat": 12.89379793394775, "lng": 77.55243284973947}}}
 
 type LatLongType = {
   latitude: number;
   longitude: number;
 };
 
-const HomeScreen = ({navigation, route}: Props) => {
+const HomeScreen = () => {
   const [pickUpSuggetionList, setPickUpSuggetionList] = useState({});
   const [dropSuggetionList, setDropSuggetionList] = useState({});
+  const navigation =
+    useNavigation<NativeStackNavigationProp<RootStackParamList>>();
 
   const hasPickUpData = Object.keys(pickUpSuggetionList).length > 0;
   const hasDropData = Object.keys(dropSuggetionList).length > 0;
 
-  const location1 = {
-    latitude: 12.906816899999999,
-    longitude: 77.56352473621337,
-    latitudeDelta: 0.015,
-    longitudeDelta: 0.0121,
-  };
-  const location2 = {
-    latitude: 12.905897401483081,
-    longitude: 77.55948543548584,
-    latitudeDelta: 0.015,
-    longitudeDelta: 0.0121,
-  };
+  // const location1 = {
+  //   latitude: 12.906816899999999,
+  //   longitude: 77.56352473621337,
+  //   latitudeDelta: 0.015,
+  //   longitudeDelta: 0.0121,
+  // };
+  // const location2 = {
+  //   latitude: 12.905897401483081,
+  //   longitude: 77.55948543548584,
+  //   latitudeDelta: 0.015,
+  //   longitudeDelta: 0.0121,
+  // };
   const mapArea = {
     latitude: 12.906775855682382,
     longitude: 77.56171703338624,
     latitudeDelta: 0.015,
     longitudeDelta: 0.0121,
   };
+  // return <Button title={'click Me'} />;
   return (
     <SafeAreaView>
       {/* <TouchableOpacity onPress={() => {navigation.push('Screen2')}}><Text>{route.params.name}</Text></TouchableOpacity> */}
@@ -65,8 +56,6 @@ const HomeScreen = ({navigation, route}: Props) => {
           style={styles.map}
           initialRegion={mapArea}>
           <View style={styles.searchContainer}>
-            <PriceCalculation vehiclePrice={600} distance={8} />
-
             <GooglePlacesAutocomplete
               placeholder="Enter pick up location"
               onPress={(data, details = null) => {
@@ -125,7 +114,7 @@ const HomeScreen = ({navigation, route}: Props) => {
             <Marker coordinate={dropSuggetionList as LatLongType} />
           ) : null}
         </MapView>
-        <VehicleBottomSheet onSelectCallback={item => console.log('clicked')} />
+        <VehicleBottomSheet onSelectCallback={() => console.log('clicked')} />
       </View>
     </SafeAreaView>
   );
@@ -168,19 +157,15 @@ const styles = StyleSheet.create({
   },
   searchContainer: {
     display: 'flex',
-    // flex: 1,
-    // backgroundColor:'red',
-    // height: 50
-    // flexDirection: 'column'
   },
 });
 
-const CustomMarker = () => {
-  return (
-    <View style={styles.marker}>
-      <Text style={styles.text}>Pickup</Text>
-    </View>
-  );
-};
+// const CustomMarker = () => {
+//   return (
+//     <View style={styles.marker}>
+//       <Text style={styles.text}>Pickup</Text>
+//     </View>
+//   );
+// };
 
 export default HomeScreen;

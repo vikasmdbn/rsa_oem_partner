@@ -1,37 +1,66 @@
-import React from 'react';
-import {SafeAreaView, StyleSheet, View, Text} from 'react-native';
-import {NavigationContainer} from '@react-navigation/native';
+import React, {useEffect, useState} from 'react';
+import 'react-native-gesture-handler';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import type {NativeStackScreenProps} from '@react-navigation/native-stack';
-import PriceCalculation from './src/components/PriceCalculation';
-
-import CustomerDetails from './src/components/CustomerDetails';
-
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import HomeScreen from './src/components/HomeScreen';
 import Screen2 from './src/components/Screen2';
-// import styles from './src/config/styles';
+// import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+import {createDrawerNavigator} from '@react-navigation/drawer';
+import Login from './src/components/Auth/Login';
+import {ForgotPassword} from './src/components/Auth/ForgotPassword';
+import {NavigationContainer} from '@react-navigation/native';
+export const AuthContext = React.createContext<any>(false);
 export type RootStackParamList = {
-  Screen1: {name: string};
-  Screen2: {name: string};
+  Login: {};
+  ForgotPassword: any;
+  ChangePassword: {};
+  LoggedIn: any;
 };
-const Stack = createNativeStackNavigator<RootStackParamList>();
+export type DrawerStackParamList = {
+  Home: {};
+  Screen2: {title: string};
+  History: {};
+};
+const RootStack = createNativeStackNavigator<RootStackParamList>();
+const DrawerStack = createDrawerNavigator<DrawerStackParamList>();
+
+const LoggedInStack = () => (
+  <DrawerStack.Navigator>
+    <DrawerStack.Screen name="Home" component={HomeScreen} />
+    <DrawerStack.Screen name="History" component={HomeScreen} />
+    <DrawerStack.Screen
+      name="Screen2"
+      component={Screen2}
+      initialParams={{title: 'secondary'}}
+    />
+  </DrawerStack.Navigator>
+);
 
 const App = () => {
-  return (
-    // <NavigationContainer>
-    //   <Stack.Navigator>
-    //      <Stack.Screen name="Screen2" component={Screen2} initialParams={{name: 'Tyler'}}/>
-    //     <Stack.Screen name="Screen1" component={HomeScreen} initialParams={{name: 'Tyler'}}/>
+  const [isLoggedIn, setIsLoggedIn] = useState(true);
 
-    //   </Stack.Navigator>
-    // </NavigationContainer>
-    //  <View style={styles.colors}>
-    // <PriceCalculation vehiclePrice={600} distance={8}/>
-    // //  </View>
-    <CustomerDetails />
+  useEffect(() => {
+    AsyncStorage.getItem('userToken').then(token => {
+      setIsLoggedIn(!!token);
+    });
+  }, []);
+  return (
+    <AuthContext.Provider value={{isLoggedIn, setIsLoggedIn}}>
+      <NavigationContainer>
+        {!isLoggedIn ? (
+          <RootStack.Navigator>
+            <RootStack.Screen name={'Login'} component={Login} />
+            <RootStack.Screen
+              name={'ForgotPassword'}
+              component={ForgotPassword}
+            />
+            <RootStack.Screen name={'LoggedIn'} component={LoggedInStack} />
+          </RootStack.Navigator>
+        ) : (
+          <LoggedInStack />
+        )}
+      </NavigationContainer>
+    </AuthContext.Provider>
   );
 };
-
-const styles = StyleSheet.create({});
-
 export default App;

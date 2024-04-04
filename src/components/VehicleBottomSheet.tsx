@@ -33,7 +33,7 @@ const data: vehicleItemT[] = [
 ];
 
 type VehicleBottomSheetProps = {
-  onSelectCallback: (item: vehicleItemT) => never;
+  onSelectCallback: (item: vehicleItemT) => void;
 };
 
 export const VehicleBottomSheet = ({

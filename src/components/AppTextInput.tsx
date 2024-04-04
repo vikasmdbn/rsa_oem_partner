@@ -2,6 +2,7 @@ import React from 'react';
 import {View, TextInput, StyleSheet} from 'react-native';
 
 import defaultStyles from '../config/styles';
+import colors from '../config/colors';
 
 function AppTextInput({width = '100%', ...otherProps}: any) {
   return (
@@ -18,10 +19,12 @@ function AppTextInput({width = '100%', ...otherProps}: any) {
 const styles = StyleSheet.create({
   container: {
     backgroundColor: defaultStyles.colors.light,
-    borderRadius: 25,
+    borderRadius: 5,
     flexDirection: 'row',
     padding: 15,
     marginVertical: 10,
+    borderColor: colors.secondary,
+    borderWidth: 1,
   },
   icon: {
     marginRight: 10,
