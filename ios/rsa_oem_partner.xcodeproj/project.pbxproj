@@ -36,6 +36,8 @@
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = rsa_oem_partner/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = rsa_oem_partner/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = rsa_oem_partner/main.m; sourceTree = "<group>"; };
+		14C08B9B2BBFD4FB000B8BB4 /* FontAwesome.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FontAwesome.ttf; sourceTree = "<group>"; };
+		14C08BA62BBFD4FB000B8BB4 /* MaterialIcons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = MaterialIcons.ttf; sourceTree = "<group>"; };
 		19F6CBCC0A4E27FBF8BF4A61 /* libPods-rsa_oem_partner-rsa_oem_partnerTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-rsa_oem_partner-rsa_oem_partnerTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B4392A12AC88292D35C810B /* Pods-rsa_oem_partner.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-rsa_oem_partner.debug.xcconfig"; path = "Target Support Files/Pods-rsa_oem_partner/Pods-rsa_oem_partner.debug.xcconfig"; sourceTree = "<group>"; };
 		5709B34CF0A7D63546082F79 /* Pods-rsa_oem_partner.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-rsa_oem_partner.release.xcconfig"; path = "Target Support Files/Pods-rsa_oem_partner/Pods-rsa_oem_partner.release.xcconfig"; sourceTree = "<group>"; };
@@ -86,6 +88,7 @@
 		13B07FAE1A68108700A75B9A /* rsa_oem_partner */ = {
 			isa = PBXGroup;
 			children = (
+				14C08BAA2BBFD4FB000B8BB4 /* Fonts */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.mm */,
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
@@ -94,6 +97,16 @@
 				13B07FB71A68108700A75B9A /* main.m */,
 			);
 			name = rsa_oem_partner;
+			sourceTree = "<group>";
+		};
+		14C08BAA2BBFD4FB000B8BB4 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				14C08B9B2BBFD4FB000B8BB4 /* FontAwesome.ttf */,
+				14C08BA62BBFD4FB000B8BB4 /* MaterialIcons.ttf */,
+			);
+			name = Fonts;
+			path = "../node_modules/react-native-vector-icons/Fonts";
 			sourceTree = "<group>";
 		};
 		2D16E6871FA4F8E400B85C8A /* Frameworks */ = {
