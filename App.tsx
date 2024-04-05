@@ -9,6 +9,10 @@ import Login from './src/components/Auth/Login';
 import {ForgotPassword} from './src/components/Auth/ForgotPassword';
 import {NavigationContainer} from '@react-navigation/native';
 import {Rides} from './src/components/Rides';
+import {Payments} from './src/components/Payements';
+import {Insurance} from './src/components/Insurance';
+import {Support} from './src/components/Support';
+import {About} from './src/components/About';
 export const AuthContext = React.createContext<any>(false);
 export type RootStackParamList = {
   Login: {};
@@ -21,6 +25,10 @@ export type DrawerStackParamList = {
   Screen2: {title: string};
   History: {};
   Rides: {};
+  Payments: {};
+  Insurance: {};
+  Support: {};
+  About: {};
 };
 const RootStack = createNativeStackNavigator<RootStackParamList>();
 const DrawerStack = createDrawerNavigator<DrawerStackParamList>();
@@ -30,6 +38,10 @@ const LoggedInStack = () => (
     <DrawerStack.Screen name="Home" component={HomeScreen} />
     <DrawerStack.Screen name="History" component={HomeScreen} />
     <DrawerStack.Screen name="Rides" component={Rides} />
+    <DrawerStack.Screen name="Payments" component={Payments} />
+    <DrawerStack.Screen name="Insurance" component={Insurance} />
+    <DrawerStack.Screen name="Support" component={Support} />
+    <DrawerStack.Screen name="About" component={About} />
     <DrawerStack.Screen
       name="Screen2"
       component={Screen2}
