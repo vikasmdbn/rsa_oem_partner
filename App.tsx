@@ -13,6 +13,15 @@ import {Payments} from './src/components/Payements';
 import {Insurance} from './src/components/Insurance';
 import {Support} from './src/components/Support';
 import {About} from './src/components/About';
+import {DailyPage} from './src/components/DailyPage';
+import {OutstationPage} from './src/components/OutstationPage';
+import {Wxyz} from './src/components/Wxyz';
+import {ElectricPage} from './src/components/ElectricPage';
+import {ParcelPage} from './src/components/ParcelPage';
+import {ONDCFoodPage} from './src/components/ONDCFoodPage';
+import {MoneyPage} from './src/components/MoneyPage';
+import {AbcdPage} from './src/components/AbcdPage';
+import {EVTestRidePage} from './src/components/EVTestRidePage';
 export const AuthContext = React.createContext<any>(false);
 export type RootStackParamList = {
   Login: {};
@@ -29,6 +38,15 @@ export type DrawerStackParamList = {
   Insurance: {};
   Support: {};
   About: {};
+  DailyPage: {};
+  OutstationPage: {};
+  Wxyz: {};
+  ElectricPage: {};
+  ParcelPage: {};
+  ONDCFoodPage: {};
+  MoneyPage: {};
+  AbcdPage: {};
+  EVTestRidePage: {};
 };
 const RootStack = createNativeStackNavigator<RootStackParamList>();
 const DrawerStack = createDrawerNavigator<DrawerStackParamList>();
@@ -42,6 +60,15 @@ const LoggedInStack = () => (
     <DrawerStack.Screen name="Insurance" component={Insurance} />
     <DrawerStack.Screen name="Support" component={Support} />
     <DrawerStack.Screen name="About" component={About} />
+    <DrawerStack.Screen name="DailyPage" component={DailyPage} />
+    <DrawerStack.Screen name="OutstationPage" component={OutstationPage} />
+    <DrawerStack.Screen name="Wxyz" component={Wxyz} />
+    <DrawerStack.Screen name="ElectricPage" component={ElectricPage} />
+    <DrawerStack.Screen name="ParcelPage" component={ParcelPage} />
+    <DrawerStack.Screen name="ONDCFoodPage" component={ONDCFoodPage} />
+    <DrawerStack.Screen name="MoneyPage" component={MoneyPage} />
+    <DrawerStack.Screen name="AbcdPage" component={AbcdPage} />
+    <DrawerStack.Screen name="EVTestRidePage" component={EVTestRidePage} />
     <DrawerStack.Screen
       name="Screen2"
       component={Screen2}
@@ -73,7 +100,6 @@ const App = () => {
         ) : (
           <LoggedInStack />
         )}
-        {/*<RootStack.screen name={}></RootStack.screen>*/}
       </NavigationContainer>
     </AuthContext.Provider>
   );
