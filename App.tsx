@@ -4,7 +4,6 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import HomeScreen from './src/components/HomeScreen';
 import Screen2 from './src/components/Screen2';
-// import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {createDrawerNavigator} from '@react-navigation/drawer';
 import Login from './src/components/Auth/Login';
 import {ForgotPassword} from './src/components/Auth/ForgotPassword';

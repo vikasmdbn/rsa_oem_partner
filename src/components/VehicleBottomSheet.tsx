@@ -7,6 +7,7 @@ import {
   TouchableHighlight,
 } from 'react-native';
 import {Dimensions} from 'react-native';
+// import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
 const windowHeight = Dimensions.get('window').height;
 
@@ -59,6 +60,7 @@ export const VehicleBottomSheet = ({
                 ...styles.listItem,
                 backgroundColor: index === selectedIndex ? '#ddd' : '#fff',
               }}>
+              {/*<MaterialCommunityIcons name={'car-back'} />*/}
               <Text style={styles.listItemTitle}>{item.vehicleType}</Text>
               <Text
                 style={
