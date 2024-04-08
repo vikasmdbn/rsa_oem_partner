@@ -9,7 +9,7 @@ import {VehicleBottomSheet} from './VehicleBottomSheet';
 import {useNavigation} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {RootStackParamList} from '../../App';
-import HorizontalBar from './HorizontalBar';
+import HorizontalSlider from './HorizontalBar';
 
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
@@ -115,7 +115,7 @@ const HomeScreen = () => {
             <Marker coordinate={dropSuggetionList as LatLongType} />
           ) : null}
         </MapView>
-        <HorizontalBar />
+        <HorizontalSlider />
         <VehicleBottomSheet onSelectCallback={() => console.log('clicked')} />
       </View>
     </SafeAreaView>

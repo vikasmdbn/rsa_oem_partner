@@ -7,6 +7,7 @@ import {
   Image,
   TouchableOpacity,
 } from 'react-native';
+import {NavigationProp} from '@react-navigation/native';
 import {useNavigation} from '@react-navigation/native';
 
 interface DataItem {
@@ -15,7 +16,9 @@ interface DataItem {
   image: string;
   screen: string;
 }
-
+interface HorizontalSliderProps {
+  navigation: NavigationProp<any, any>; // Import NavigationProp from @react-navigation/native
+}
 const data: DataItem[] = [
   {
     key: '1',
@@ -89,13 +92,10 @@ const data: DataItem[] = [
   },
 ];
 
-const HorizontalBar = () => {
-  const navigation = useNavigation();
-
+const HorizontalSlider: React.FC<HorizontalSliderProps> = ({navigation}) => {
   const renderItem = ({item}: {item: DataItem}) => (
-    <TouchableOpacity
-      style={styles.item}
-      onPress={() => navigation.navigate(item.screen)}>
+    <TouchableOpacity style={styles.item}>
+      {/*onPress={() => navigation.navigate(item.screen)}*/}
       <Image source={{uri: item.image}} style={styles.image} />
       <Text style={styles.text}>{item.text}</Text>
     </TouchableOpacity>
@@ -134,4 +134,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default HorizontalBar;
+export default HorizontalSlider;
