@@ -1,5 +1,14 @@
 import React from 'react';
-import {View, Text, FlatList, StyleSheet, Image} from 'react-native';
+import {
+  View,
+  Text,
+  FlatList,
+  StyleSheet,
+  Image,
+  TouchableOpacity,
+} from 'react-native';
+import {useNavigation} from '@react-navigation/native';
+import RideDetail from './RideDetail';
 
 type Ride = {
   type: string;
@@ -66,7 +75,6 @@ const rides: Ride[] = [
       'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSDSn1hT5tcd5-LnF6rgwoKwtmjhyvkNwCvDg&usqp=CAU',
   },
 ];
-
 const formatDate = (dateString: string) => {
   const date = new Date(dateString);
   const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
@@ -94,16 +102,22 @@ const formatDate = (dateString: string) => {
   return `${dayOfWeek}, ${monthOfYear} ${dayOfMonth}, ${hour}:${minute} ${period}`;
 };
 const History = () => {
+  const navigation = useNavigation();
   const renderRideItem = ({item}: {item: Ride}) => (
     <View>
-      <View style={styles.rideItem}>
-        <Text style={styles.dateTime}>{formatDate(item.date)}</Text>
-        <Text>{item.type}</Text>
-        <Image source={{uri: item.image}} style={styles.image} />
-      </View>
-      <View style={styles.separator} />
+      <TouchableOpacity onPress={() => handleRidePress(item)}>
+        <View style={styles.rideItem}>
+          <Text style={styles.dateTime}>{formatDate(item.date)}</Text>
+          <Text>{item.type}</Text>
+          <Image source={{uri: item.image}} style={styles.image} />
+        </View>
+        <View style={styles.separator} />
+      </TouchableOpacity>
     </View>
   );
+  const handleRidePress = (ride: Ride) => {
+    navigation.navigate('RideDetail', {ride});
+  };
 
   return (
     <View style={styles.container}>

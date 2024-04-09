@@ -15,7 +15,8 @@ import {Support} from './src/components/Support';
 import {About} from './src/components/About';
 import HorizontalSlider from './src/components/HorizontalBar';
 import {Account} from './src/components/Account';
-
+import EditProfileScreen from './src/components/EditProfileScreen';
+import RideDetail from './src/components/RideDetail';
 export const AuthContext = React.createContext<any>(false);
 export type RootStackParamList = {
   Login: {};
@@ -27,10 +28,12 @@ export type RootStackParamList = {
 };
 export type DrawerStackParamList = {
   Account: {};
+  EditProfileScreen: {};
   Home: {};
   Screen2: {title: string};
   History: {};
   Rides: {};
+  RideDetail: {};
   Payments: {};
   Insurance: {};
   Support: {};
@@ -43,9 +46,14 @@ const DrawerStack = createDrawerNavigator<DrawerStackParamList>();
 const LoggedInStack = () => (
   <DrawerStack.Navigator>
     <DrawerStack.Screen name="Account" component={Account} />
+    <DrawerStack.Screen
+      name="EditProfileScreen"
+      component={EditProfileScreen}
+    />
     <DrawerStack.Screen name="Home" component={HomeScreen} />
     <DrawerStack.Screen name="History" component={HomeScreen} />
     <DrawerStack.Screen name="Rides" component={History} />
+    <DrawerStack.Screen name="RideDetail" component={RideDetail} />
     <DrawerStack.Screen name="Payments" component={Payments} />
     <DrawerStack.Screen name="Insurance" component={Insurance} />
     <DrawerStack.Screen name="Support" component={Support} />
