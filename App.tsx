@@ -11,12 +11,12 @@ import {NavigationContainer} from '@react-navigation/native';
 import History from './src/components/Rides';
 import {Payments} from './src/components/Payements';
 import {Insurance} from './src/components/Insurance';
-import {Support} from './src/components/Support';
 import {About} from './src/components/About';
 import HorizontalSlider from './src/components/HorizontalBar';
 import {Account} from './src/components/Account';
 import EditProfileScreen from './src/components/EditProfileScreen';
 import RideDetail from './src/components/RideDetail';
+import ContactForm from './src/components/ContactUs';
 export const AuthContext = React.createContext<any>(false);
 export type RootStackParamList = {
   Login: {};
@@ -25,18 +25,20 @@ export type RootStackParamList = {
   LoggedIn: any;
   data: {title: string};
   HorizontalSlider: {title: string};
+  RideDetail: {title: string};
+  EditProfileScreen: any;
 };
 export type DrawerStackParamList = {
   Account: {};
-  EditProfileScreen: {};
+  // EditProfileScreen: {};
   Home: {};
   Screen2: {title: string};
   History: {};
   Rides: {};
-  RideDetail: {};
+  // RideDetail: {};
   Payments: {};
   Insurance: {};
-  Support: {};
+  ContactForm: {};
   About: {};
 };
 
@@ -46,17 +48,17 @@ const DrawerStack = createDrawerNavigator<DrawerStackParamList>();
 const LoggedInStack = () => (
   <DrawerStack.Navigator>
     <DrawerStack.Screen name="Account" component={Account} />
-    <DrawerStack.Screen
-      name="EditProfileScreen"
-      component={EditProfileScreen}
-    />
+    {/*<DrawerStack.Screen*/}
+    {/*  name="EditProfileScreen"*/}
+    {/*  component={EditProfileScreen}*/}
+    {/*/>*/}
     <DrawerStack.Screen name="Home" component={HomeScreen} />
-    <DrawerStack.Screen name="History" component={HomeScreen} />
+    {/*<DrawerStack.Screen name="History" component={HomeScreen} />*/}
     <DrawerStack.Screen name="Rides" component={History} />
-    <DrawerStack.Screen name="RideDetail" component={RideDetail} />
+    {/*<DrawerStack.Screen name="RideDetail" component={RideDetail} />*/}
     <DrawerStack.Screen name="Payments" component={Payments} />
     <DrawerStack.Screen name="Insurance" component={Insurance} />
-    <DrawerStack.Screen name="Support" component={Support} />
+    <DrawerStack.Screen name="ContactForm" component={ContactForm} />
     <DrawerStack.Screen name="About" component={About} />
     <DrawerStack.Screen
       name="Screen2"
@@ -88,6 +90,11 @@ const App = () => {
             <RootStack.Screen
               name={'HorizontalSlider'}
               component={HorizontalSlider}
+            />
+            <RootStack.Screen name="RideDetail" component={RideDetail} />
+            <RootStack.Screen
+              name={'EditProfileScreen'}
+              component={EditProfileScreen}
             />
           </RootStack.Navigator>
         ) : (
