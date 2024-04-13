@@ -104,7 +104,7 @@ const History = () => {
   const navigation = useNavigation();
   const renderRideItem = ({item}: {item: Ride}) => (
     <View>
-      <TouchableOpacity onPress={() => handleRidePress(item)}>
+      <TouchableOpacity onPress={() => handleRidePress()}>
         <View style={styles.rideItem}>
           <Text style={styles.dateTime}>{formatDate(item.date)}</Text>
           <Text>{item.type}</Text>
@@ -114,10 +114,12 @@ const History = () => {
       </TouchableOpacity>
     </View>
   );
-  const handleRidePress = (ride: Ride) => {
-    navigation.navigate('RideDetail', {ride});
+  const handleRidePress = () => {
+    navigation.push('RideDetail');
   };
-
+  // const handleRidePress = (ride: Ride) => {
+  //   navigation.navigate('RideDetail', {ride});
+  // };
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Rides</Text>

@@ -10,7 +10,6 @@ const RideDetail = ({route}: {route: any}) => {
       <Text>Type: {ride.type}</Text>
       <Text>Date: {ride.date}</Text>
       <Text>Time: {ride.time}</Text>
-      {/* Add more details here */}
     </View>
   );
 };

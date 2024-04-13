@@ -47,7 +47,6 @@ const DrawerStack = createDrawerNavigator<DrawerStackParamList>();
 
 const LoggedInStack = () => (
   <DrawerStack.Navigator>
-    <DrawerStack.Screen name="Account" component={Account} />
     {/*<DrawerStack.Screen*/}
     {/*  name="EditProfileScreen"*/}
     {/*  component={EditProfileScreen}*/}
@@ -58,6 +57,7 @@ const LoggedInStack = () => (
     {/*<DrawerStack.Screen name="RideDetail" component={RideDetail} />*/}
     <DrawerStack.Screen name="Payments" component={Payments} />
     <DrawerStack.Screen name="Insurance" component={Insurance} />
+    <DrawerStack.Screen name="Account" component={Account} />
     <DrawerStack.Screen name="ContactForm" component={ContactForm} />
     <DrawerStack.Screen name="About" component={About} />
     <DrawerStack.Screen

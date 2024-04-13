@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import {View, TextInput, Button, StyleSheet, Text, Linking} from 'react-native';
-import {Formik} from 'formik';
+import {Formik, FormikValues} from 'formik';
 
 const ContactForm = () => {
   const [submitted, setSubmitted] = useState(false);
@@ -13,7 +13,10 @@ const ContactForm = () => {
     Linking.openURL('mailto:vikasmd@gmail.com');
   };
 
-  const handleSubmit = (values, {resetForm}) => {
+  const handleSubmit = (
+    values: FormikValues,
+    {resetForm}: {resetForm: () => void},
+  ) => {
     console.log(values); // You can replace this with your submission logic
     setSubmitted(true);
     resetForm();
@@ -115,7 +118,7 @@ const styles = StyleSheet.create({
   },
   messageInput: {
     height: 100,
-    textAlignVertical: 'top', // Ensures the text starts from the top
+    textAlignVertical: 'top',
   },
   successMessage: {
     marginBottom: 10,
